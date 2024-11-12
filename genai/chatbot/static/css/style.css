@@ -1,0 +1,437 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar Custom Styles */
+.custom-navbar {
+    background-color: #1f2937; /* Dark color for a sleek look */
+    padding: 1rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.custom-navbar .navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #d1d5db;
+    transition: color 0.3s ease-in-out;
+    margin: 0 10px;
+    position: relative;
+}
+
+.custom-navbar .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+/* Hover effect with underline */
+.custom-navbar .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #2575fc;
+    transition: width 0.3s ease-in-out;
+}
+
+.custom-navbar .navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Button Customization */
+.btn-primary {
+    background-color: #2575fc;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #1a5bbd;
+}
+
+.btn-success {
+    background-color: #00c851;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: 500;
+}
+
+.btn-success:hover {
+    background-color: #007e33;
+}
+
+/* Responsive Navbar */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+
+
+/* Hero Section */
+.hero-section {
+
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    height: 80vh;
+}
+
+.hero-section h1, .hero-section p {
+    animation-duration: 1s;
+}
+
+/* Feature Cards */
+.feature-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: #2575fc;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #1a5bbd;
+}
+
+.btn-success {
+    background-color: #00c851;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #007e33;
+}
+
+
+
+/* Use Cases Section Styles */
+.use-cases-section {
+    background-color: #f3f4f6;
+    padding: 60px 0;
+}
+
+.use-cases-section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #1f2937;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Card Styling */
+.use-case-card {
+    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.use-case-card .card-body {
+    padding: 20px;
+}
+
+/* Icons Styling */
+.use-case-card .fa-laptop-code {
+    color: #2575fc;
+}
+
+.use-case-card .fa-book-reader {
+    color: #00c851;
+}
+
+.use-case-card .fa-tools {
+    color: #ff4444;
+}
+
+/* Card Hover Effects */
+.use-case-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.use-case-card .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+.use-case-card .card-text {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .use-case-card {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Testimonials Section Styles */
+.testimonials-section {
+    background-color: #f9fafb;
+    padding: 60px 0;
+}
+
+.testimonials-section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #1f2937;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Testimonial Card Styling */
+.testimonial-card {
+    border: none;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-content {
+    text-align: center;
+}
+
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #2575fc;
+    padding: 3px;
+    transition: border-color 0.3s ease;
+}
+
+.testimonial-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 10px;
+}
+
+.testimonial-text {
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .testimonial-card {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Call to Action Section Styles */
+.cta-section {
+    /* background-image: url(''); Background image for visual appeal */
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay to enhance text readability */
+    z-index: 1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cta-text {
+    font-size: 1.125rem;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary {
+    background-color: #2575fc;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #1a5bbd;
+}
+
+@media (max-width: 768px) {
+    .cta-heading {
+        font-size: 2rem;
+    }
+
+    .cta-text {
+        font-size: 1rem;
+    }
+}
+
+
+/* Custom CSS for Accordion */
+.accordion-button {
+    background-color: #2575fc;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    
+}
+
+.accordion-button:hover {
+    background-color: #1e62d0;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-item {
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.accordion-collapse {
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.accordion-body {
+    font-size: 1rem;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+/* Footer Styles */
+.footer {
+    background-color: #1f2937;
+    color: #ffffff;
+    padding: 40px 0;
+}
+
+.footer-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #d1d5db;
+}
+
+.footer-links {
+    padding-left: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: #2575fc;
+}
+
+.footer-social {
+    margin-top: 15px;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin: 0 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+    color: #2575fc;
+}
+
+.footer-copy {
+    font-size: 0.875rem;
+    color: #d1d5db;
+    margin-top: 20px;
+}
+span #animation{
+    font-size: 40px;
+
+}
+
+.fas{
+    color: #2575fc;
+}
+
+.card-title{
+    background-color: rgb(232, 191, 4);
+    padding: 5px 10px;
+    border-radius: 20px;
+
+
+}
+.card-text{
+    box-shadow: 1px 1px 1px rgb(161, 156, 155);
+    padding: 10px 5px;
+    border-radius: 10px;
+
+}

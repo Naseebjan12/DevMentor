@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-lg custom-navbar sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">DevMentor</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "index" %}">Home</a>
+                </li>
+              
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "usecase" %}">Use Cases</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "contact" %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "register" %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a  href="{% url "login" %}"class="btn btn-primary mx-2">Try DevMentor</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Contact Page -->
+<section id="contact-page" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Get in Touch with DevMentor</h2>
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-md-6 mb-4">
+                <div class="contact-form">
+                    <h3>Contact Us</h3>
+                    <form action="{% url 'contact' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Contact Information -->
+            <div class="col-md-6 mb-4">
+                <div class="contact-info">
+                    <h3>Our Contact Information</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt"></i> Charsadda Khyber PakhtunKhwa Pakistan</li>
+                        <li><i class="fas fa-phone"></i> +92 (320) 9884204</li>
+                        <li><i class="fas fa-envelope"></i> jancomputeracademy@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon - Fri: 9 AM - 6 PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Map Integration -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center mb-4">Find Us Here</h3>
+                <div class="map-container">
+                    
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3302.1129629348084!2d71.73438157461587!3d34.143451973122836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d939a7186a9d8d%3A0x98ee20cd96360db5!2sGovt%20Post%20Graduate%20College%20Charsadda!5e0!3m2!1sen!2s!4v1725958680444!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Footer Section -->
+<footer class="footer py-4">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <h5 class="footer-heading">About Us</h5>
+                <p class="footer-text">DevMentor is designed to assist developers by providing instant answers and solutions to coding challenges. Enhance your productivity with our powerful AI-powered assistant.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Use Cases</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5 class="footer-heading">Follow Us</h5>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/naseeb-jan-1a8081307/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Naseebjan12" class="social-icon"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <p class="footer-copy">&copy; 2024 DevMentor. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+{% endblock %}

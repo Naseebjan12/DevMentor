@@ -1,0 +1,427 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot UI with History</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #ece5dd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    .chat-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      background-color: #ffffff;
+    }
+
+    /* Left Panel for History */
+    .history-panel {
+      width: 30%;
+      background-color: #075e54;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      color: white;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .history-panel h5 {
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .history-panel .history-item {
+      background-color: #128c7e;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .history-panel .history-item:hover {
+      background-color: #25d366;
+    }
+
+    /* Right Panel for Chat */
+    .chat-main {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .chat-header {
+      background-color: #075e54;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header h5 {
+      margin: 0;
+    }
+
+    .chat-body {
+      padding: 20px;
+      flex-grow: 1;
+      overflow-y: auto;
+      background-color: #ece5dd;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-message {
+      margin-bottom: 10px;
+      position: relative;
+      max-width: 60%;
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-size: 14px;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+    }
+
+    /* User's message style */
+    .chat-message.user {
+      align-self: flex-end;
+      background-color: #dcf8c6;
+      color: black;
+    }
+
+    .user-profile {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background-color: #075e54;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Bot's message style */
+    .chat-message.bot {
+      align-self: flex-start;
+      background-color: #ffffff;
+      border: 1px solid #d9d9d9;
+      padding-top: 25px;
+    }
+
+    .bot-profile {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background-color: #075e54;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .chat-footer {
+      padding: 10px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #ddd;
+    }
+
+    .chat-footer input {
+      background-color: #f1f1f1;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      width: calc(100% - 60px);
+    }
+
+    .chat-footer button {
+      background-color: #075e54;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      margin-left: 10px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .chat-footer button:hover {
+      background-color: #064c48;
+    }
+
+    .copy-btn {
+      background-color: transparent;
+      border: none;
+      color: #075e54;
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .copy-btn:hover {
+      color: #128c7e;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .chat-container {
+        flex-direction: column;
+      }
+
+      .history-panel {
+        width: 100%;
+        height: 30%;
+      }
+
+      .chat-main {
+        width: 100%;
+        height: 70%;
+      }
+    }
+    .chat-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .message-text {
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      animation: fadeInUp 0.3s ease-in-out;
+    }
+    
+    .chat-message.user .message-text {
+      align-self: flex-end;
+      background-color: #dcf8c6;
+      color: black;
+    }
+    
+    .chat-message.bot .message-text {
+      align-self: flex-start;
+      background-color: #ffffff;
+      border: 1px solid #d9d9d9;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Copy button styling */
+.copy-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.copy-btn i {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Positioning for the message text container */
+.message-text {
+  position: relative;
+  padding: 10px 35px 10px 15px; /* Add extra padding for the copy button */
+}
+
+    
+  </style>
+</head>
+<body>
+
+<div class="chat-container">
+  <!-- History Panel on the Left -->
+  <div class="history-panel">
+    <h5>Chat History</h5>
+    {%  if chat_history %}
+        {% for history in chat_history %}
+            <div class="history-item">
+              {{ history.user_messages }}
+               
+            </div>
+        {% empty %}
+        <div class="history-item">
+          History Not found...
+        </div>
+        {% endfor %}
+{% endif %}
+    
+    
+    
+
+  </div>
+
+   
+
+  <!-- Chat Panel on the Right -->
+  <div class="chat-main">
+    <!-- Chat Header -->
+    <div class="chat-header">
+      <h5>DevMentor Chat</h5>
+      <a href="{% url 'new_chat' %}" class="new-chat">New Chat +</a>
+      <a href="{% url 'logout' %}" class="btn btn-outline-light ms-3">Logout</a>
+    </div>
+    
+    <!-- Chat Body -->
+     <!-- Chat Body -->
+<div class="chat-body">
+  {% if chat_history %}
+    <div class="chat-messages">
+      {% for history in chat_history %}
+        <!-- User's message -->
+       <!-- User's message -->
+<div class="chat-message user">
+  <div class="user-profile">{{ name }}</div>
+  <div class="message-text">
+    {{ history.user_messages }}
+    {% comment %} <button class="copy-btn" title="Copy">
+      <i class="fas fa-copy"></i>
+    </button> {% endcomment %}
+  </div>
+</div>
+
+<!-- Bot's response -->
+<div class="chat-message bot">
+  <div class="bot-profile">Bot</div>
+  <div class="message-text">
+    {{ history.bot_messages }}
+    <button class="copy-btn" title="Copy">
+      <i class="fas fa-copy"></i>
+    </button>
+  </div>
+</div>
+
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="no-history">No chat history found.</div>
+  {% endif %}
+</div>
+
+    
+
+    <!-- Chat Footer -->
+    <form action='{% url 'bot' %}' method='post'>
+      {% csrf_token %}
+      <div class="chat-footer">
+       
+        
+        <input type="text" name="command" placeholder="Ask Something About Programming..." required />
+        
+        <button type="submit" class="send-btn">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<script>
+
+   // Initially hide the user and bot messages if they are empty
+   document.addEventListener("DOMContentLoaded", function() {
+    const userMessage = "{{ user_message }}";
+    const botResponse = "{{ bot_response }}";
+
+    if (!userMessage) {
+        document.querySelector(".chat-message.user").style.display = "none";
+    }
+
+    if (!botResponse) {
+        document.querySelector(".chat-message.bot").style.display = "none";
+    }
+});
+
+  // Scroll to the bottom of the chat container
+  function scrollToBottom() {
+    const chatContainer = document.querySelector(".chat-container");
+    if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  }
+
+  // Automatically scroll when the page loads
+  window.onload = scrollToBottom;
+
+  // Automatically scroll when a new message is added
+  const observer = new MutationObserver(scrollToBottom);
+  const chatContainer = document.querySelector(".chat-container");
+
+  if (chatContainer) {
+    observer.observe(chatContainer, { childList: true });
+  }
+
+  // copy to clip board script
+document.addEventListener("DOMContentLoaded", function () {
+  // Attach event listener to the parent container of chat messages
+  const chatContainer = document.querySelector(".chat-container");
+
+  chatContainer.addEventListener("click", function (event) {
+    // Check if the clicked element is a copy button or its child (icon)
+    if (event.target.classList.contains("copy-btn") || event.target.closest(".copy-btn")) {
+      const button = event.target.closest(".copy-btn");
+      const messageText = button.parentElement.textContent.trim();
+
+      // Copy the text to clipboard
+      navigator.clipboard.writeText(messageText).then(() => {
+        alert("Text copied to clipboard!");
+      }).catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+    }
+  });
+});
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

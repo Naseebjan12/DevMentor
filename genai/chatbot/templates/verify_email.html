@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #eef2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            max-width: 450px;
+            width: 100%;
+        }
+        
+        .verification-box {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .verification-box h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .verification-box p {
+            font-size: 15px;
+            margin-bottom: 25px;
+            color: #7f8c8d;
+        }
+        
+        .verification-box form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .verification-box label {
+            font-size: 15px;
+            color: #34495e;
+            text-align: left;
+            margin-bottom: 6px;
+        }
+        
+        .verification-box input {
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #bdc3c7;
+            font-size: 16px;
+            transition: border-color 0.2s ease-in-out;
+            width: 100%;
+        }
+        
+        .verification-box input:focus {
+            outline: none;
+            border-color: #2980b9;
+        }
+        
+        .verification-box button {
+            padding: 14px;
+            border-radius: 6px;
+            border: none;
+            background-color: #2980b9;
+            color: #ffffff;
+            font-size: 17px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .verification-box button:hover {
+            background-color: #1b4f72;
+        }
+        
+        .resend {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-top: 15px;
+        }
+        
+        .resend a {
+            color: #2980b9;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .resend a:hover {
+            color: #1b4f72;
+            text-decoration: underline;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+
+    
+    <div class="container">
+        <div class="verification-box">
+            <h2>Email Verification</h2>
+            <p>Please enter the verification code sent to your email.</p>
+
+            <form id="verify-form" method="POST" action="{% url 'verify_email' %}">
+                {% csrf_token %}
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="verification_code">Verification Code:</label>
+                <input type="text" id="verification_code" name="verification_code" placeholder="Enter verification code" required>
+
+                <button type="submit" id="submit-btn">Verify</button>
+            </form>
+
+            <p class="resend">Didn't receive the code? <a href="#" id="resend-code">Resend Code</a></p>
+        </div>
+    </div>
+
+   <script>
+    document.getElementById('verify-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+    
+        const email = document.getElementById('email').value;
+        const verificationCode = document.getElementById('verification_code').value;
+    
+        if (!validateEmail(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+    
+        if (verificationCode.length !== 6) {
+            alert('Please enter a valid 6-digit verification code.');
+            return;
+        }
+    
+        // If form is valid, allow submission
+        this.submit();
+    });
+    
+    // Validate email using regex
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+    
+    // Handle resend code click
+    document.getElementById('resend-code').addEventListener('click', function (event) {
+        event.preventDefault();
+        alert('Verification code has been resent to your email.');
+    });
+    
+   </script>
+</body>
+</html>

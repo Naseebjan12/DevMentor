@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-lg custom-navbar sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">DevMentor</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "index" %}">Home</a>
+                </li>
+              
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "usecase" %}">Use Cases</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "contact" %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "register" %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a  href="{% url "login" %}"class="btn btn-primary mx-2">Try DevMentor</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Use Cases Page -->
+<section id="use-cases-page" class="use-cases-page py-5">
+    <div class="container">
+        <h1 class="text-center mb-5">Explore DevMentor Use Cases</h1>
+        <div class="row">
+            <!-- Use Case 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-code"></i>
+                        </div>
+                        <h5 class="card-title">Code Assistance</h5>
+                        <p class="card-text">Get instant help with coding syntax, best practices, and troubleshooting errors in any programming language. Enhance your coding skills with DevMentor's valuable insights.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-laptop-code"></i>
+                        </div>
+                        <h5 class="card-title">Learning New Languages</h5>
+                        <p class="card-text">Boost your learning journey by asking DevMentor for explanations, examples, and comparisons of different coding languages. Learn new languages with ease and clarity.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-bug"></i>
+                        </div>
+                        <h5 class="card-title">Debugging and Error Fixing</h5>
+                        <p class="card-text">Struggling with bugs? DevMentor helps you identify errors and offers solutions to fix your code quickly. Get detailed explanations to resolve issues efficiently.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-tachometer-alt"></i>
+                        </div>
+                        <h5 class="card-title">Code Optimization</h5>
+                        <p class="card-text">Improve your code performance with DevMentor’s optimization tips. Learn best practices for writing efficient code and enhance your application’s speed and scalability.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-project-diagram"></i>
+                        </div>
+                        <h5 class="card-title">Project Guidance</h5>
+                        <p class="card-text">Planning a new project? DevMentor provides guidance on structuring your project, choosing the right technologies, and implementing best practices for a successful development process.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-plug"></i>
+                        </div>
+                        <h5 class="card-title">API Integration</h5>
+                        <p class="card-text">Integrate APIs seamlessly with DevMentor’s support. Get help with understanding API documentation, implementing endpoints, and troubleshooting integration issues.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 7 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-check-circle"></i>
+                        </div>
+                        <h5 class="card-title">Code Review</h5>
+                        <p class="card-text">Submit your code for review and get feedback on potential improvements, security vulnerabilities, and adherence to best practices. DevMentor helps ensure your code meets high standards.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 8 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-cogs"></i>
+                        </div>
+                        <h5 class="card-title">Algorithm Design</h5>
+                        <p class="card-text">Get assistance with designing algorithms for complex problems. DevMentor can help you understand different algorithms, their complexities, and provide suggestions for efficient solutions.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 9 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-database"></i>
+                        </div>
+                        <h5 class="card-title">Database Management</h5>
+                        <p class="card-text">Receive guidance on database design, queries, and optimization. DevMentor can help you create efficient database schemas, write complex queries, and ensure your database performs optimally.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 10 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-cloud-upload-alt"></i>
+                        </div>
+                        <h5 class="card-title">Deployment Strategies</h5>
+                        <p class="card-text">Learn about best practices for deploying your applications. DevMentor offers advice on deployment strategies, CI/CD pipelines, and environment management to ensure smooth deployment processes.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 11 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x center fa-shield-alt"></i>
+                        </div>
+                        <h5 class="card-title">Security Best Practices</h5>
+                        <p class="card-text">Understand and implement security best practices in your code. DevMentor can help you identify potential security issues, suggest improvements, and ensure your code is secure against common vulnerabilities.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Use Case 12 -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body">
+                        <div class="use-case-icon mb-3">
+                            <i class="fas fa-3x fa-code-branch"></i>
+                        </div>
+                        <h5 class="card-title">Code Refactoring</h5>
+                        <p class="card-text">Improve the structure and readability of your code with DevMentor’s refactoring suggestions. Get tips on making your code more maintainable and efficient by applying industry-standard refactoring techniques.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer py-4">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <h5 class="footer-heading">About Us</h5>
+                <p class="footer-text">DevMentor is designed to assist developers by providing instant answers and solutions to coding challenges. Enhance your productivity with our powerful AI-powered assistant.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="{% url "index" %}">Home</a></li>
+                    <li><a href="{% url "usecase" %}">Use Cases</a></li>
+                    <li><a href="{% url "contact" %}">Contact</a></li>
+                    <li><a href="{% url "bot" %}">Try DevMentor</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5 class="footer-heading">Follow Us</h5>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/naseeb-jan-1a8081307/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Naseebjan12" class="social-icon"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        <div class="mt-4">
+            <p class="footer-copy">&copy; 2024 DevMentor. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+{% endblock %}

@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-lg custom-navbar sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">DevMentor</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "index" %}">Home</a>
+                </li>
+              
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "usecase" %}">Use Cases</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "contact" %}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "register" %}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a  href="{% url "bot" %}"class="btn btn-primary mx-2">Try DevMentor</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section class="hero-section d-flex align-items-center justify-content-center text-center text-white">
+    <div class="container">
+        <h1 class="display-4 animate__animated animate__fadeInDown">Empower Your Coding Journey with DevMentor</h1>
+        <p class="lead animate__animated animate__fadeInUp">Get instant answers from our AI chatbot for languages like <span id='animation'>Python</span></p>
+
+        <style>
+            #animation {
+                padding: 5px 10px;
+                 /* Set a fixed background color */
+                color: white; /* Set text color to white for contrast */
+                border-radius: 5px; /* Smooth edges */
+                display: inline-block;
+                background-color:rgb(232, 191, 4);
+            }
+        </style>
+        <a href="{% url "login" %}" class="btn btn-primary btn-lg mt-3 animate__animated animate__bounceIn">Try DevMentor Now</a>
+    </div>
+        <!-- Script to change the langage after 2 second interval -->
+    <script>
+        const languages = ['Python', 'C++', 'JavaScript', 'Java', 'Ruby', 'Go', 'Rust'];
+        let index = 0;
+
+        function changeLanguage() {
+            const span = document.getElementById('animation');
+            span.textContent = languages[index];
+            index = (index + 1) % languages.length; // Loop back to the first language
+        }
+
+        setInterval(changeLanguage, 2000); // Change text every 2 seconds
+    </script>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="fas fa-code fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Instant Coding Solutions</h5>
+                        <p class="card-text">Get real-time answers for your programming questions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="fas fa-language fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Multi-language Support</h5>
+                        <p class="card-text">Covers all major programming languages. like Python , c# etc</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="fas fa-bug fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Error Debugging</h5>
+                        <p class="card-text">Quick help with code errors and debugging tips.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Use Cases Section -->
+<section id="use-cases" class="use-cases-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Explore DevMentor Use Cases</h2>
+        <div class="row">
+            <!-- Card 1: Code Assistance -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-laptop-code fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Code Assistance</h5>
+                        <p class="card-text">Get instant help with coding syntax, best practices,  troubleshooting errors & debugging.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2: Learning New Languages -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-book-reader fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Learning New Languages</h5>
+                        <p class="card-text">Boost your learning journey by asking DevMentor for explanations, examples, and comparisons.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3: Debugging and Error Fixing -->
+            <div class="col-md-4 mb-4">
+                <div class="card use-case-card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-tools fa-3x mb-3 text-danger"></i>
+                        <h5 class="card-title">Debugging and Error Fixing</h5>
+                        <p class="card-text">Struggling with bugs? DevMentor helps you identify errors and offers solutions to fix your code quickly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">What Our Users Say</h2>
+        <div class="row">
+            <!-- Testimonial 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card testimonial-card shadow-sm">
+                    <div class="card-body">
+                        <div class="testimonial-content">
+                            <img src="https://via.placeholder.com/80" alt="User Image" class="testimonial-img rounded-circle mb-3">
+                            <h5 class="testimonial-name">Abdal Ahmad</h5>
+                            <p class="testimonial-text">"DevMentor has transformed the way I code. It's like having a personal assistant that’s always ready to help with any coding challenge!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card testimonial-card shadow-sm">
+                    <div class="card-body">
+                        <div class="testimonial-content">
+                            <img src="https://via.placeholder.com/80" alt="User Image" class="testimonial-img rounded-circle mb-3">
+                            <h5 class="testimonial-name">M Aziz Khan</h5>
+                            <p class="testimonial-text">"Amazing experience! DevMentor helped me learn Python much faster by providing instant answers and code suggestions."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card testimonial-card shadow-sm">
+                    <div class="card-body">
+                        <div class="testimonial-content">
+                            <img src="https://via.placeholder.com/80" alt="User Image" class="testimonial-img rounded-circle mb-3">
+                            <h5 class="testimonial-name">M Tayyab</h5>
+                            <p class="testimonial-text">"I love using DevMentor! It’s intuitive, responsive, and saves me hours when I’m stuck debugging complex code."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Call to Action Section -->
+<section id="cta" class="cta-section py-5 text-center">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-heading">Ready to Transform Your Coding Experience?</h2>
+            <p class="cta-text">Join thousands of developers who are boosting their productivity with DevMentor. Start solving your programming challenges with ease today!</p>
+            <a href="{% url "bot" %}" class="btn btn-primary btn-lg">Get Started</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Accordion Section -->
+<section id="accordion-section" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Frequently Asked Question</h2>
+        <div class="accordion" id="accordionExample">
+            <!-- Accordion Item 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Feature 1: Code Assistance
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Get instant help with coding syntax, best practices, and troubleshooting errors in any programming language. Enhance your coding skills with DevMentor's valuable insights.
+                    </div>
+                </div>
+            </div>
+            <!-- Accordion Item 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Feature 2: Learning New Languages
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Boost your learning journey by asking DevMentor for explanations, examples, and comparisons of different coding languages. Learn new languages with ease and clarity.
+                    </div>
+                </div>
+            </div>
+            <!-- Add more accordion items as needed -->
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Footer Section -->
+<footer class="footer py-4">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <h5 class="footer-heading">About Us</h5>
+                <p class="footer-text">DevMentor is designed to assist developers by providing instant answers and solutions to coding challenges. Enhance your productivity with our powerful AI-powered assistant.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5 class="footer-heading">Quick Links</h5>
+                <ul class="footer-links list-unstyled">
+                    <li><a href="{% url "index" %}">Home</a></li>
+                    <li><a href="{% url "usecase" %}">Use Cases</a></li>
+                    <li><a href="{% url "contact" %}">Contact</a></li>
+                    <li><a href="{% url "login" %}">Try DevMentor</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h5 class="footer-heading">Follow Us</h5>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/naseeb-jan-1a8081307/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Naseebjan12" class="social-icon"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <p class="footer-copy">&copy; 2024 DevMentor. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+
+
+{% endblock %}
